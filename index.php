@@ -76,13 +76,18 @@ foreach($hotels as $x){
             <h3 class="card-title"><?php echo $item['name'] ?></h3>
             <h5 class="card-subtitle mb-2 text-body-secondary"><?php echo $item['description'] ?></h5>
             <p class="card-text">
-              <?php 
-               if($item['parking'] === true) 
-                 echo "Parcheggio: Libero";
-               else{
-                 echo "Parcheggio: Occupato";
-               }
-              ?>
+              <h5>Informazioni:</h5>
+              <p>
+                <?php 
+                if($item['parking'] === true) 
+                  echo "Parcheggio: Libero";
+                else{
+                  echo "Parcheggio: Occupato";
+                }
+                ?>
+              </p>
+              <p>Voto: <?php echo $item['vote'] ?></p>
+              <p>Distanza dal centro: <?php echo $item['distance_to_center']?> km</p>
             </p>
           </div>
         </div>
