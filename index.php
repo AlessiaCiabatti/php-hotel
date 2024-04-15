@@ -40,20 +40,60 @@ $hotels = [
 
 ];
 
+foreach($hotels as $x){
+  $name = $x['name'];
+  echo "<h2> $name </h2>";
+  var_dump($x);
+  }
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!--  -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel</title>
 </head>
 
 <body>
-  <?php foreach($hotels as $x) 
-  var_dump($hotels);
-  ?>
+
+<div class="container my-5">
+
+  <h1>Cards Hotels</h1>
+
+  <div class="row">
+
+    <?php foreach($hotels as $item): ?>
+
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h3 class="card-title"><?php echo $item['name'] ?></h3>
+            <h5 class="card-subtitle mb-2 text-body-secondary"><?php echo $item['description'] ?></h5>
+            <p class="card-text">
+              <?php 
+               if($item['parking'] === true) 
+                 echo "Parcheggio: Libero";
+               else{
+                 echo "Parcheggio: Occupato";
+               }
+              ?>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    <?php endforeach; ?>
+
+  </div>
+
+</div>
+
+
 </body>
 </html>
