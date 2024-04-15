@@ -40,11 +40,25 @@ $hotels = [
 
 ];
 
-foreach($hotels as $x){
-  $name = $x['name'];
-  echo "<h2> $name </h2>";
-  var_dump($x);
-  }
+// foreach($hotels as $x){
+//   $name = $x['name'];
+//   echo "<h2> $name </h2>";
+//   var_dump($x);
+//   }
+
+$parcheggio = $_POST['parcheggio'] ?? '';
+// echo $parcheggio;
+
+// filtro array con solo parking === true
+if(isset($parcheggio) && $parcheggio === 'parcheggio'){
+$hotels_filtrati = array_filter($hotels, function($hotel) {
+  return $hotel['parking'] === true;
+});
+}else{
+  $hotels_filtrati = $hotels;
+}
+
+// var_dump($hotels_filtrati);
 
 ?>
 
@@ -66,9 +80,15 @@ foreach($hotels as $x){
 
   <h1>Cards Hotels</h1>
 
+  <form action="index.php" method="post">
+    <h5 class="mb-3">scrivi parcheggio</h5>
+    <input class="mb-5" type="text" placeholder="Parcheggio" name="parcheggio">
+    <button class="btn btn-primary" type="submit">Invia</button>
+  </form>
+
   <div class="row">
 
-    <?php foreach($hotels as $item): ?>
+    <?php foreach($hotels_filtrati as $item): ?>
 
       <div class="col-md-4">
         <div class="card mb-3">
